@@ -16,12 +16,18 @@
     }
 
     try {
-        $pdo = new PDO('mysql:host=localhost;dbname=shoes;charset-utf8mb4', 'shoeuser', 'mypassword');
-        $sql = 'SELECT `size` FROM  shoes.slops`';
+        $pdo = new PDO('mysql:host=localhost;dbname=shoes;charset-utf8mb4', 'root', '');
+        $sql = 'SELECT `size` FROM  `slops`';
         $result = $pdo->query($sql);
+
+        while ($row = $result->fetch()){
+            $shoes[] = $row['slops'];
+        }
     } catch (PDOException $e) {
-        $error = 'Unablr to connect to the database server: '.$e-> getMessage() . ' in ' . $e->getFile().':'.$e->getLine();
+        $error = 'Unable to connect to the database server: '.$e-> getMessage() . ' in ' . $e->getFile().':'.$e->getLine();
     }
+
+    
 
     include 'output.php';
     

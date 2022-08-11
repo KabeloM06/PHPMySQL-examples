@@ -9,6 +9,24 @@
 <body>
     <?php 
         echo $output;
+        echo "<br>";
+
+        
     ?>
+
+    <?php if (isset($error)): ?>
+    <p>
+        <?php echo $error; ?>
+    </p>
+    <?php else: ?>
+    <?php foreach ($shoes as $shoe): ?>
+    <blockquote>
+        <p>
+            <?php echo htmlspecialchars($shoe, ENT_QUOTES, 'UTF-8') ?>
+        </p>
+    </blockquote>
+    <?php endforeach; ?>
+    <?php endif; ?>
+    
 </body>
 </html>
